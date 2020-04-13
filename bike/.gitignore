@@ -31,7 +31,6 @@ build/
 .vscode/
 
 .mvn/
-mvnw/
 
 # Scala IDE specific (Scala & Java development for Eclipse)
 .cache-main
