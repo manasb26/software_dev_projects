@@ -1,6 +1,5 @@
 package com.globomatics.bike.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,23 +20,24 @@ import com.globomatics.bike.repositories.BikeRepository;
 public class BikesController {
 	
 	@Autowired
-	BikeRepository BikeRepository;
+	BikeRepository bikeRepository;
 	
 	@GetMapping
 	public List<Bike> list() {
-		return BikeRepository.findAll();
+		return bikeRepository.findAll();
 	}
 	
 	@GetMapping
-	@RequestMapping("{/id}")
+	@RequestMapping("{id}")
 	public Bike getBike(@PathVariable long id) {
-		return BikeRepository.getOne(id);
+		return bikeRepository.getOne(id);
 	}
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.OK)
 	public void create(@RequestBody Bike bike) {
-		BikeRepository.save(bike);
+		System.out.println(bike.getName());
+		bikeRepository.saveAndFlush(bike);
 	}
 
 }
